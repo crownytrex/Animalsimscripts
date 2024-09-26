@@ -1,0 +1,21 @@
+local UserInputService = game:GetService("UserInputService")
+local runService = game:GetService("RunService")
+
+-- The key you want to spam (e.g., Q)
+local keyToSpam = Enum.KeyCode.Q
+local spamming = true
+
+-- Function to simulate key press
+local function pressKey()
+    UserInputService.InputBegan:Fire({
+        UserInputType = Enum.UserInputType.Keyboard,
+        KeyCode = keyToSpam
+    })
+end
+
+-- Run the macro
+runService.RenderStepped:Connect(function()
+    if spamming then
+        pressKey()
+    end
+end)
