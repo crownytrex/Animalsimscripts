@@ -1,6 +1,5 @@
 # Animalsimscripts
-
-# -- Variables
+ -- Variables
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
 local mouse = player:GetMouse()
