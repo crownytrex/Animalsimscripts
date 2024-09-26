@@ -1,0 +1,23 @@
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+local character = player.Character or player.CharacterAdded:Wait()
+
+-- Create or get your cat model
+local cat = workspace:WaitForChild("Cat") -- Ensure your cat model is named "Cat"
+
+-- Function to update cat position
+local function followMouse()
+    while true do
+        if cat then
+            local targetPosition = mouse.Hit.Position
+            -- Move the cat smoothly towards the mouse position
+            local direction = (targetPosition - cat.PrimaryPart.Position).unit
+            local newPosition = cat.PrimaryPart.Position + direction * 0.5 -- Adjust speed here
+            cat:SetPrimaryPartCFrame(CFrame.new(newPosition))
+        end
+        wait(0.1) -- Update every 0.1 seconds for smooth movement
+    end
+end
+
+-- Start following the mouse
+followMouse()
